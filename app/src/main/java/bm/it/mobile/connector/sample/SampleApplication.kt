@@ -13,7 +13,7 @@ class SampleApplication: Application() {
 
         connector = ConnectorApplication.Builder()
             .setContext(this)
-            .setType(ConnectorType.RETROFIT)
+            .setType(ConnectorType.REST_API)
             .build()
     }
 
