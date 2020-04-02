@@ -2,17 +2,22 @@ package bm.it.mobile.connector.library
 
 import android.content.Context
 import bm.it.mobile.connector.library.request.IRequestType
-import bm.it.mobile.connector.library.request.RequestType
+import bm.it.mobile.connector.library.request.RequestTypeRestAPI
+import bm.it.mobile.connector.library.request.RequestTypeRetrofit
 
 class ConnectorApplication(private val context: Context,
                            private val connectorType: ConnectorType) {
 
-    private lateinit var requestType: RequestType
+    private lateinit var requestType: IRequestType
 
     fun configureRequest(): IRequestType {
         if (requestType == null) {
-            requestType =
-                RequestType(connectorType)
+
+            if (connectorType == ConnectorType.REST_API) {
+                requestType = RequestTypeRestAPI()
+            } else if (connectorType == ConnectorType.RETROFIT) {
+                requestType = RequestTypeRetrofit()
+            }
         }
         return requestType
     }

@@ -3,8 +3,7 @@ package bm.it.mobile.connector.library.request
 import bm.it.mobile.connector.library.ConnectorType
 import bm.it.mobile.connector.library.IConnectorCallback
 
-class RequestType(private val connectorType: ConnectorType) :
-    IRequestType {
+class RequestTypeRetrofit() : IRequestType {
 
     override fun post(url: String, callback: IConnectorCallback) {
     }
