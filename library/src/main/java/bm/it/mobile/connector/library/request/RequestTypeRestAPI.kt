@@ -4,6 +4,7 @@ import bm.it.mobile.connector.library.IConnectorCallback
 import bm.it.mobile.connector.library.enums.HTTPCodes
 import bm.it.mobile.connector.library.rest.ConnectorResponse
 import bm.it.mobile.connector.library.rest.ConnectorRestAPI
+import org.jetbrains.anko.doAsync
 
 class RequestTypeRestAPI : IRequestType {
 
@@ -21,8 +22,10 @@ class RequestTypeRestAPI : IRequestType {
     }
 
     override fun get(url: String, callback: IConnectorCallback) {
-        val response = rest.get(url)
-        analyseResponse(response, callback)
+        doAsync {
+            val response = rest.get(url)
+            analyseResponse(response, callback)
+        }
     }
 
     private fun analyseResponse(response: ConnectorResponse, callback: IConnectorCallback) {
