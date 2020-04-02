@@ -1,7 +1,10 @@
 package bm.it.mobile.connector.library
 
-interface IConnectorCallback {
-    fun onSuccess()
+import bm.it.mobile.connector.library.rest.response.ConnectorFailureResponse
+import bm.it.mobile.connector.library.rest.response.ConnectorSuccessResponse
 
-    fun onFailure()
+interface IConnectorCallback {
+    fun onSuccess(successResponse: ConnectorSuccessResponse)
+
+    fun onFailure(failureResponse: ConnectorFailureResponse)
 }

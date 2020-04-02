@@ -1,6 +1,6 @@
-package bm.it.mobile.connector.library.rest
+package bm.it.mobile.connector.library.rest.response
 
-class ConnectorResponse(
+class ConnectorSuccessResponse(
     val code: Int,
     val message: String,
     val method: String,

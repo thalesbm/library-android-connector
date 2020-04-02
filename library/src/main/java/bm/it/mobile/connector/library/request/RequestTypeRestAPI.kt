@@ -2,8 +2,9 @@ package bm.it.mobile.connector.library.request
 
 import bm.it.mobile.connector.library.IConnectorCallback
 import bm.it.mobile.connector.library.enums.HTTPCodes
-import bm.it.mobile.connector.library.rest.ConnectorResponse
 import bm.it.mobile.connector.library.rest.ConnectorRestAPI
+import bm.it.mobile.connector.library.rest.response.ConnectorFailureResponse
+import bm.it.mobile.connector.library.rest.response.ConnectorSuccessResponse
 import org.jetbrains.anko.doAsync
 
 class RequestTypeRestAPI : IRequestType {
@@ -28,10 +29,18 @@ class RequestTypeRestAPI : IRequestType {
         }
     }
 
-    private fun analyseResponse(response: ConnectorResponse, callback: IConnectorCallback) {
-        if (response.code == HTTPCodes.SUCCESS.code) {
-            callback.onSuccess()
+    private fun analyseResponse(
+        successResponse: ConnectorSuccessResponse,
+        callback: IConnectorCallback
+    ) {
+        if (successResponse.code == HTTPCodes.SUCCESS.code) {
+            callback.onSuccess(successResponse)
         }
-        callback.onFailure()
+        callback.onFailure(
+            ConnectorFailureResponse(
+                successResponse.code, successResponse.message,
+                successResponse.method, successResponse.url
+            )
+        )
     }
 }
