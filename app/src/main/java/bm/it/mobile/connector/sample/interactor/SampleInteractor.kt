@@ -7,10 +7,22 @@ import bm.it.mobile.connector.sample.repository.ISampleRepository
 class SampleInteractor(private val presenter: ISamplePresenter,
                        private val repository: ISampleRepository): ISampleInteractor {
 
-    override fun getUsers() {
+    override fun getSample() {
         repository.getUsers(object : IConnectorCallback {
             override fun onSuccess() {}
             override fun onFailure() {}
         })
+    }
+
+    override fun postSample() {
+
+    }
+
+    override fun putSample() {
+
+    }
+
+    override fun deleteSample() {
+
     }
 }

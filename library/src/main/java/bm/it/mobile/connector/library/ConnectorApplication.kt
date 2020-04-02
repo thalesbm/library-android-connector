@@ -1,6 +1,7 @@
 package bm.it.mobile.connector.library
 
 import android.content.Context
+import bm.it.mobile.connector.library.enums.ConnectorType
 import bm.it.mobile.connector.library.request.IRequestType
 import bm.it.mobile.connector.library.request.RequestTypeRestAPI
 import bm.it.mobile.connector.library.request.RequestTypeRetrofit
@@ -15,6 +16,7 @@ class ConnectorApplication(private val context: Context,
 
             if (connectorType == ConnectorType.REST_API) {
                 requestType = RequestTypeRestAPI()
+
             } else if (connectorType == ConnectorType.RETROFIT) {
                 requestType = RequestTypeRetrofit()
             }

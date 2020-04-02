@@ -2,5 +2,11 @@ package bm.it.mobile.connector.sample.interactor
 
 interface ISampleInteractor {
 
-    fun getUsers()
+    fun getSample()
+
+    fun postSample()
+
+    fun putSample()
+
+    fun deleteSample()
 }
