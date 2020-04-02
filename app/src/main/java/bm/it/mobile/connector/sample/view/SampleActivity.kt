@@ -20,7 +20,7 @@ class SampleActivity : AppCompatActivity(), ISampleView {
 
         interactor = SampleInteractor(
             SamplePresenter(this),
-            SampleRepository(SampleApplication.getInstance().connector))
+            SampleRepository(SampleApplication.instance.connector))
 
         init()
     }

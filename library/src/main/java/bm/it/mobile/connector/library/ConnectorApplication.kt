@@ -12,7 +12,7 @@ class ConnectorApplication(private val context: Context,
     private lateinit var requestType: IRequestType
 
     fun configureRequest(): IRequestType {
-        if (requestType == null) {
+        if (!::requestType.isInitialized) {
 
             if (connectorType == ConnectorType.REST_API) {
                 requestType = RequestTypeRestAPI()

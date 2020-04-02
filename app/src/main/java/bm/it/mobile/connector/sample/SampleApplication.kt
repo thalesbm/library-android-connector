@@ -11,6 +11,8 @@ class SampleApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
+        instance = this
+
         connector = ConnectorApplication.Builder()
             .setContext(this)
             .setType(ConnectorType.REST_API)
@@ -18,13 +20,6 @@ class SampleApplication: Application() {
     }
 
     companion object {
-        private lateinit var instance: SampleApplication
-
-        fun getInstance(): SampleApplication {
-            if (instance == null) {
-                instance = SampleApplication()
-            }
-            return instance
-        }
+        lateinit var instance: SampleApplication
     }
 }
