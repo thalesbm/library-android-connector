@@ -4,7 +4,7 @@ import bm.it.mobile.connector.sample.model.UserModel
 
 interface ISampleView {
 
-    fun print(model: UserModel)
+    fun print(value: String)
 
     fun showError()
 }

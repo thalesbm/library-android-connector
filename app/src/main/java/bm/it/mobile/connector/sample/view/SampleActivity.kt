@@ -40,13 +40,14 @@ class SampleActivity : AppCompatActivity(), ISampleView {
         }
 
         activitySamplePostButton.setOnClickListener {
-            interactor.postSample()
+            val model = UserModel(27, "thales.bm92@gmail.com", "Thales B Marega", true)
+            interactor.postSample(model)
         }
     }
 
-    override fun print(model: UserModel) {
+    override fun print(value: String) {
         activitySampleLabelTextView.apply {
-            text = model.printModel()
+            text = value
         }
     }
 
