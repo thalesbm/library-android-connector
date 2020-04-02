@@ -12,8 +12,10 @@ class RequestTypeRestAPI : IRequestType {
     private var rest: ConnectorRestAPI = ConnectorRestAPI()
 
     override fun post(url: String, body: String, callback: IConnectorCallback) {
-        val response = rest.post(body, url)
-        analyseResponse(response, callback)
+        doAsync {
+            val response = rest.post(body, url)
+            analyseResponse(response, callback)
+        }
     }
 
     override fun put(url: String, body: String, callback: IConnectorCallback) {
@@ -33,7 +35,8 @@ class RequestTypeRestAPI : IRequestType {
         successResponse: ConnectorSuccessResponse,
         callback: IConnectorCallback
     ) {
-        if (successResponse.code == HTTPCodes.SUCCESS.code) {
+        if (successResponse.code == HTTPCodes.SUCCESS.code ||
+            successResponse.code == HTTPCodes.CREATED.code  ) {
             callback.onSuccess(successResponse)
         }
         callback.onFailure(
