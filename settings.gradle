@@ -1,0 +1,3 @@
+rootProject.name='ConnectorSample'
+include ':app'
+include ':library'

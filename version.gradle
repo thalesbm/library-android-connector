@@ -1,0 +1,7 @@
+ext {
+    kotlinVersion = '1.3.61'
+
+    retrofitVersion = '2.4.0'
+    loggingVersion = '3.10.0'
+    gsonVersion = '2.8.2'
+}
