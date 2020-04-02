@@ -1,7 +1,10 @@
 package bm.it.mobile.connector.sample.view
 
+import bm.it.mobile.connector.sample.model.UserModel
+
 interface ISampleView {
 
-    fun print(json: String)
+    fun print(model: UserModel)
 
+    fun showError()
 }

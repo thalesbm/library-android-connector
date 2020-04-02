@@ -1,8 +1,9 @@
 package bm.it.mobile.connector.sample.repository
 
-import bm.it.mobile.connector.library.IConnectorCallback
+import bm.it.mobile.connector.library.IRepositoryCallback
+import bm.it.mobile.connector.sample.model.UserModel
 
 interface ISampleRepository {
 
-    fun getUsers(callback: IConnectorCallback)
+    fun getUsers(callback: IRepositoryCallback<UserModel>)
 }

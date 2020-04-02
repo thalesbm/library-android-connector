@@ -6,6 +6,7 @@ import bm.it.mobile.connector.sample.R
 import bm.it.mobile.connector.sample.SampleApplication
 import bm.it.mobile.connector.sample.interactor.ISampleInteractor
 import bm.it.mobile.connector.sample.interactor.SampleInteractor
+import bm.it.mobile.connector.sample.model.UserModel
 import bm.it.mobile.connector.sample.presenter.SamplePresenter
 import bm.it.mobile.connector.sample.repository.SampleRepository
 import kotlinx.android.synthetic.main.activity_sample.*
@@ -43,9 +44,13 @@ class SampleActivity : AppCompatActivity(), ISampleView {
         }
     }
 
-    override fun print(json: String) {
+    override fun print(model: UserModel) {
         activitySampleLabelTextView.apply {
-            text = json
+            text = model.printModel()
         }
+    }
+
+    override fun showError() {
+
     }
 }
