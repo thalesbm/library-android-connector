@@ -8,7 +8,7 @@ interface ISampleInteractor {
 
     fun postSample(model: UserModel)
 
-    fun putSample()
+    fun putSample(model: UserModel)
 
     fun deleteSample()
 }

@@ -39,4 +39,19 @@ class SampleRepository(private val connector: ConnectorApplication) : ISampleRep
             }
         })
     }
+
+    override fun putUser(model: UserModel, callback: IRepositoryCallback<UriModel>) {
+        val gson = Gson()
+        val json = gson.toJson(model)
+
+        connector.configureRequest().put(SampleURL.PUT, json, object : IConnectorCallback {
+            override fun onSuccess(successResponse: ConnectorSuccessResponse) {
+                callback.onSuccess(gson.fromJson(successResponse.json, UriModel::class.java))
+            }
+
+            override fun onFailure(failureResponse: ConnectorFailureResponse) {
+                callback.onFailure()
+            }
+        })
+    }
 }

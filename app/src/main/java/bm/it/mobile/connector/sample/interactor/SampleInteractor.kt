@@ -33,8 +33,16 @@ class SampleInteractor(private val presenter: ISamplePresenter,
         })
     }
 
-    override fun putSample() {
+    override fun putSample(model: UserModel) {
+        repository.putUser(model, object : IRepositoryCallback<UriModel>{
+            override fun onSuccess(out: UriModel) {
+                presenter.print(out)
+            }
 
+            override fun onFailure() {
+                presenter.showError()
+            }
+        })
     }
 
     override fun deleteSample() {

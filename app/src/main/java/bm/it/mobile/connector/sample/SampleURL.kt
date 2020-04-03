@@ -4,5 +4,6 @@ class SampleURL {
     companion object {
         val GET = "https://api.myjson.com/bins/cwv0o"
         val POST = "https://api.myjson.com/bins"
+        val PUT = "https://api.myjson.com/bins"
     }
 }

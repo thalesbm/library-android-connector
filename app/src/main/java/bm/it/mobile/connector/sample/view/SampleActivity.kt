@@ -32,7 +32,8 @@ class SampleActivity : AppCompatActivity(), ISampleView {
         }
 
         activitySamplePutButton.setOnClickListener {
-            interactor.putSample()
+            val model = UserModel(27, "thales.bm92@gmail.com", "Thales Bertolini Marega", true)
+            interactor.putSample(model)
         }
 
         activitySampleDeleteButton.setOnClickListener {
