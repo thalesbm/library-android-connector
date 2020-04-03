@@ -1,10 +1,9 @@
 package bm.it.mobile.connector.sample
 
-class SampleURL {
-    companion object {
-        val GET = "https://reqres.in/api/users/3"
-        val POST = "https://reqres.in/api/users"
-        val PUT = "https://reqres.in/api/users/2"
-        val DELETE = "https://reqres.in/api/users/4"
-    }
+enum class SampleURL(val url: String) {
+    BASE("https://reqres.in"),
+    GET("/api/users/3"),
+    POST("/api/users"),
+    PUT("/api/users/2"),
+    DELETE("/api/users/4")
 }

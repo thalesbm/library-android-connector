@@ -20,7 +20,7 @@ class SampleRepository(private val connector: ConnectorApplication) : ISampleRep
     private var gson: Gson = Gson()
 
     override fun getUsers(callback: IRepositoryCallback<UserModel>) {
-        connector.configureRequest().get(SampleURL.GET, object : IConnectorCallback {
+        connector.configureRequest().get(SampleURL.GET.url, object : IConnectorCallback {
             override fun onSuccess(successResponse: ConnectorSuccessResponse) {
                 val response = gson.fromJson(successResponse.json, GetUserResponse::class.java)
                 val model = SampleConvertResponseHelper.convertToModel(response)
@@ -37,7 +37,7 @@ class SampleRepository(private val connector: ConnectorApplication) : ISampleRep
         val request = SampleConvertRequestHelper.convertToCreateUserRequest(model)
         val json = gson.toJson(request)
 
-        connector.configureRequest().post(SampleURL.POST, json, object : IConnectorCallback {
+        connector.configureRequest().post(SampleURL.POST.url, json, object : IConnectorCallback {
             override fun onSuccess(successResponse: ConnectorSuccessResponse) {
                 val response = gson.fromJson(successResponse.json, CreateUserResponse::class.java)
                 val model = SampleConvertResponseHelper.convertToModel(response)
@@ -54,7 +54,7 @@ class SampleRepository(private val connector: ConnectorApplication) : ISampleRep
         val request = SampleConvertRequestHelper.convertToUpdateUserRequest(model)
         val json = gson.toJson(request)
 
-        connector.configureRequest().put(SampleURL.PUT, json, object : IConnectorCallback {
+        connector.configureRequest().put(SampleURL.PUT.url, json, object : IConnectorCallback {
             override fun onSuccess(successResponse: ConnectorSuccessResponse) {
                 val response = gson.fromJson(successResponse.json, UpdateUserResponse::class.java)
                 val model = SampleConvertResponseHelper.convertToModel(response)
@@ -68,7 +68,7 @@ class SampleRepository(private val connector: ConnectorApplication) : ISampleRep
     }
 
     override fun deleteUser(callback: IRepositoryCallback<String>) {
-        connector.configureRequest().delete(SampleURL.DELETE, object : IConnectorCallback {
+        connector.configureRequest().delete(SampleURL.DELETE.url, object : IConnectorCallback {
             override fun onSuccess(successResponse: ConnectorSuccessResponse) {
                 callback.onSuccess(successResponse.message)
             }

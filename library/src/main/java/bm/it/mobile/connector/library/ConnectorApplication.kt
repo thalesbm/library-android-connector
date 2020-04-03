@@ -7,7 +7,8 @@ import bm.it.mobile.connector.library.request.RequestTypeRestAPI
 import bm.it.mobile.connector.library.request.RequestTypeRetrofit
 
 class ConnectorApplication(private val context: Context,
-                           private val connectorType: ConnectorType) {
+                           private val connectorType: ConnectorType,
+                           private val baseURL: String) {
 
     private lateinit var requestType: IRequestType
 
@@ -15,10 +16,10 @@ class ConnectorApplication(private val context: Context,
         if (!::requestType.isInitialized) {
 
             if (connectorType == ConnectorType.REST_API) {
-                requestType = RequestTypeRestAPI()
+                requestType = RequestTypeRestAPI(baseURL)
 
             } else if (connectorType == ConnectorType.RETROFIT) {
-                requestType = RequestTypeRetrofit()
+                requestType = RequestTypeRetrofit(baseURL)
             }
         }
         return requestType
@@ -27,6 +28,7 @@ class ConnectorApplication(private val context: Context,
     class Builder {
         private lateinit var context: Context
         private lateinit var connectorType: ConnectorType
+        private lateinit var baseURL: String
 
         fun setContext(context: Context): Builder {
             this.context = context
@@ -38,8 +40,13 @@ class ConnectorApplication(private val context: Context,
             return this
         }
 
+        fun setBaseURL(baseURL: String): Builder {
+            this.baseURL = baseURL
+            return this
+        }
+
         fun build(): ConnectorApplication {
-            return ConnectorApplication(context, connectorType)
+            return ConnectorApplication(context, connectorType, baseURL)
         }
     }
 }

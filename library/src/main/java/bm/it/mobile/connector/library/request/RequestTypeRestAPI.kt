@@ -7,34 +7,34 @@ import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
 import bm.it.mobile.connector.library.rest.ConnectorRestAPI
 import org.jetbrains.anko.doAsync
 
-class RequestTypeRestAPI : IRequestType {
+class RequestTypeRestAPI(private val baseURL: String) : IRequestType {
 
     private var rest: ConnectorRestAPI = ConnectorRestAPI()
 
     override fun post(url: String, body: String, callback: IConnectorCallback) {
         doAsync {
-            val response = rest.post(body, url)
+            val response = rest.post(body, baseURL + url)
             analyseResponse(response, callback)
         }
     }
 
     override fun put(url: String, body: String, callback: IConnectorCallback) {
         doAsync {
-            val response = rest.put(body, url)
+            val response = rest.put(body, baseURL + url)
             analyseResponse(response, callback)
         }
     }
 
     override fun get(url: String, callback: IConnectorCallback) {
         doAsync {
-            val response = rest.get(url)
+            val response = rest.get(baseURL + url)
             analyseResponse(response, callback)
         }
     }
 
     override fun delete(url: String, callback: IConnectorCallback) {
         doAsync {
-            val response = rest.delete(url)
+            val response = rest.delete(baseURL + url)
             analyseResponse(response, callback)
         }
     }
