@@ -1,4 +1,4 @@
-package bm.it.mobile.connector.library.volley;
+package bm.it.mobile.connector.library.frameworks.volley;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -13,25 +13,25 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ConnectorVolley extends Request<JSONObject> {
+public class HelperVolley extends Request<JSONObject> {
 
     private Response.Listener<JSONObject> mResponse;
     private Map<String, String> mParams;
     private String mJsonObject;
     private Map<String, String> mHeaders;
 
-    public ConnectorVolley(int method, String url, Map<String, String> params, Response.Listener<JSONObject> response, Response.ErrorListener listener) {
+    public HelperVolley(int method, String url, Map<String, String> params, Response.Listener<JSONObject> response, Response.ErrorListener listener) {
         super(method, url, listener);
         this.mParams = params;
         this.mResponse = response;
     }
 
-    public ConnectorVolley(int method, String url, Response.Listener<JSONObject> response, Response.ErrorListener listener) {
+    public HelperVolley(int method, String url, Response.Listener<JSONObject> response, Response.ErrorListener listener) {
         super(method, url, listener);
         this.mResponse = response;
     }
 
-    public ConnectorVolley(int method, String url, String jsonRequest, Map<String, String> headers, Response.Listener<JSONObject> response, Response.ErrorListener errorListener) {
+    public HelperVolley(int method, String url, String jsonRequest, Map<String, String> headers, Response.Listener<JSONObject> response, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
         this.mJsonObject = jsonRequest;
         this.mResponse = response;

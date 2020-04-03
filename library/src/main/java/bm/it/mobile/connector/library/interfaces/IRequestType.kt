@@ -1,4 +1,4 @@
-package bm.it.mobile.connector.library.request
+package bm.it.mobile.connector.library.interfaces
 
 import bm.it.mobile.connector.library.IConnectorCallback
 

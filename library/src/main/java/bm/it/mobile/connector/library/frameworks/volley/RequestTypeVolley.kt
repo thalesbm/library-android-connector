@@ -1,14 +1,20 @@
-package bm.it.mobile.connector.library.request
+package bm.it.mobile.connector.library.frameworks.volley
 
 import android.content.Context
 import android.util.Log
 import bm.it.mobile.connector.library.IConnectorCallback
+import bm.it.mobile.connector.library.frameworks.retrofit.ConnectorRetrofit
+import bm.it.mobile.connector.library.interfaces.IConnector
+import bm.it.mobile.connector.library.interfaces.IRequestType
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
-class RequestTypeVolley(private val baseURL: String, private val context: Context) : IRequestType {
+class RequestTypeVolley(private val baseURL: String, private val context: Context) :
+    IRequestType {
+
+    private var rest: IConnector = ConnectorVolley(context)
 
     override fun post(url: String, body: String, callback: IConnectorCallback) {
     }
@@ -20,14 +26,6 @@ class RequestTypeVolley(private val baseURL: String, private val context: Contex
     }
 
     override fun get(url: String, callback: IConnectorCallback) {
-        val queue = Volley.newRequestQueue(context)
-
-        val stringRequest = StringRequest(Request.Method.GET, baseURL + url,
-            Response.Listener<String> { response ->
-                Log.d("THALES", response)
-            },
-            Response.ErrorListener { Log.d("THALES1", "ERROR") })
-
-        queue.add(stringRequest)
+        rest.get(baseURL + url)
     }
 }

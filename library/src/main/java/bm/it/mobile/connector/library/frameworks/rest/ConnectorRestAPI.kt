@@ -1,5 +1,6 @@
-package bm.it.mobile.connector.library.rest
+package bm.it.mobile.connector.library.frameworks.rest
 
+import bm.it.mobile.connector.library.interfaces.IConnector
 import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
 import java.io.BufferedReader
 import java.io.IOException
@@ -7,23 +8,7 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class ConnectorRestAPI : IConnectorRestAPI {
-
-    private fun returnObject(
-        connection: HttpURLConnection,
-        sUrl: String,
-        sb: StringBuilder
-    ): ConnectorSuccessResponse {
-        val response = ConnectorSuccessResponse(
-            connection.responseCode,
-            connection.responseMessage,
-            connection.requestMethod,
-            sUrl,
-            sb.toString()
-        )
-        response.print()
-        return response
-    }
+class ConnectorRestAPI : IConnector {
 
     @Throws(IOException::class)
     override fun post(sBody: String, sUrl: String): ConnectorSuccessResponse {
@@ -51,7 +36,7 @@ class ConnectorRestAPI : IConnectorRestAPI {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        return returnObject(connection, sUrl, sb)
+        return HelperRestAPI.returnObject(connection, sUrl, sb)
     }
 
     @Throws(IOException::class)
@@ -80,7 +65,7 @@ class ConnectorRestAPI : IConnectorRestAPI {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        return returnObject(connection, sUrl, sb)
+        return HelperRestAPI.returnObject(connection, sUrl, sb)
     }
 
     @Throws(IOException::class)
@@ -103,7 +88,7 @@ class ConnectorRestAPI : IConnectorRestAPI {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        return returnObject(connection, sUrl, sb)
+        return HelperRestAPI.returnObject(connection, sUrl, sb)
     }
 
     @Throws(IOException::class)
@@ -126,6 +111,6 @@ class ConnectorRestAPI : IConnectorRestAPI {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        return returnObject(connection, sUrl, sb)
+        return HelperRestAPI.returnObject(connection, sUrl, sb)
     }
 }

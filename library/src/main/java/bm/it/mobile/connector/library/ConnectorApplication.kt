@@ -2,10 +2,10 @@ package bm.it.mobile.connector.library
 
 import android.content.Context
 import bm.it.mobile.connector.library.enums.ConnectorType
-import bm.it.mobile.connector.library.request.IRequestType
-import bm.it.mobile.connector.library.request.RequestTypeRestAPI
-import bm.it.mobile.connector.library.request.RequestTypeRetrofit
-import bm.it.mobile.connector.library.request.RequestTypeVolley
+import bm.it.mobile.connector.library.interfaces.IRequestType
+import bm.it.mobile.connector.library.frameworks.rest.RequestTypeRestAPI
+import bm.it.mobile.connector.library.frameworks.retrofit.RequestTypeRetrofit
+import bm.it.mobile.connector.library.frameworks.volley.RequestTypeVolley
 
 class ConnectorApplication(private val context: Context,
                            private val connectorType: ConnectorType,
@@ -18,13 +18,20 @@ class ConnectorApplication(private val context: Context,
 
             requestType = when (connectorType) {
                 ConnectorType.REST_API -> {
-                    RequestTypeRestAPI(baseURL)
+                    RequestTypeRestAPI(
+                        baseURL
+                    )
                 }
                 ConnectorType.RETROFIT -> {
-                    RequestTypeRetrofit(baseURL)
+                    RequestTypeRetrofit(
+                        baseURL
+                    )
                 }
                 ConnectorType.VOLLEY -> {
-                    RequestTypeVolley(baseURL, context)
+                    RequestTypeVolley(
+                        baseURL,
+                        context
+                    )
                 }
             }
         }

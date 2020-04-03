@@ -1,4 +1,4 @@
-package bm.it.mobile.connector.library.retrofit;
+package bm.it.mobile.connector.library.frameworks.retrofit;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * RETROFIT
  */
-public class ConnectorRetrofit {
+public class HelperRetrofit {
 
     private Retrofit retrofit = null;
 

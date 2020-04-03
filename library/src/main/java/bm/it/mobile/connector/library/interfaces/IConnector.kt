@@ -1,8 +1,8 @@
-package bm.it.mobile.connector.library.rest
+package bm.it.mobile.connector.library.interfaces
 
 import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
 
-interface IConnectorRestAPI {
+interface IConnector {
 
     fun post(sBody: String, sUrl: String): ConnectorSuccessResponse
 

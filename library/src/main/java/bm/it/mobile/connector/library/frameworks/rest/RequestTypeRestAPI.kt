@@ -1,15 +1,17 @@
-package bm.it.mobile.connector.library.request
+package bm.it.mobile.connector.library.frameworks.rest
 
 import bm.it.mobile.connector.library.IConnectorCallback
 import bm.it.mobile.connector.library.enums.HTTPCodes
+import bm.it.mobile.connector.library.interfaces.IConnector
+import bm.it.mobile.connector.library.interfaces.IRequestType
 import bm.it.mobile.connector.library.response.ConnectorFailureResponse
 import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
-import bm.it.mobile.connector.library.rest.ConnectorRestAPI
 import org.jetbrains.anko.doAsync
 
-class RequestTypeRestAPI(private val baseURL: String) : IRequestType {
+class RequestTypeRestAPI(private val baseURL: String) :
+    IRequestType {
 
-    private var rest: ConnectorRestAPI = ConnectorRestAPI()
+    private var rest: IConnector = ConnectorRestAPI()
 
     override fun post(url: String, body: String, callback: IConnectorCallback) {
         doAsync {
