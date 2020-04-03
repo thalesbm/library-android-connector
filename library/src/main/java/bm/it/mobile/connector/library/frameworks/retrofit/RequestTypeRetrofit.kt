@@ -5,7 +5,7 @@ import bm.it.mobile.connector.library.interfaces.IConnector
 import bm.it.mobile.connector.library.interfaces.IRequestType
 
 class RequestTypeRetrofit(private val baseURL: String) :
-    IRequestType {
+    IRequestType() {
 
     private var rest: IConnector = ConnectorRetrofit()
 

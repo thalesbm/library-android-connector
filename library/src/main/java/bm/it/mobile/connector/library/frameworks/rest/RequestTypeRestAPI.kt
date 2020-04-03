@@ -5,11 +5,12 @@ import bm.it.mobile.connector.library.enums.HTTPCodes
 import bm.it.mobile.connector.library.interfaces.IConnector
 import bm.it.mobile.connector.library.interfaces.IRequestType
 import bm.it.mobile.connector.library.response.ConnectorFailureResponse
+import bm.it.mobile.connector.library.response.ConnectorResponse
 import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
 import org.jetbrains.anko.doAsync
 
 class RequestTypeRestAPI(private val baseURL: String) :
-    IRequestType {
+    IRequestType() {
 
     private var rest: IConnector = ConnectorRestAPI()
 
@@ -38,25 +39,6 @@ class RequestTypeRestAPI(private val baseURL: String) :
         doAsync {
             val response = rest.delete(baseURL + url)
             analyseResponse(response, callback)
-        }
-    }
-
-    private fun analyseResponse(
-        successResponse: ConnectorSuccessResponse,
-        callback: IConnectorCallback
-    ) {
-        if (successResponse.code == HTTPCodes.SUCCESS.code ||
-            successResponse.code == HTTPCodes.CREATED.code ||
-            successResponse.code == HTTPCodes.NO_CONTENT.code
-        ) {
-            callback.onSuccess(successResponse)
-        } else {
-            callback.onFailure(
-                ConnectorFailureResponse(
-                    successResponse.code, successResponse.message,
-                    successResponse.method, successResponse.url
-                )
-            )
         }
     }
 }

@@ -1,7 +1,7 @@
 package bm.it.mobile.connector.library.frameworks.rest
 
 import bm.it.mobile.connector.library.interfaces.IConnector
-import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
+import bm.it.mobile.connector.library.response.ConnectorResponse
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -11,7 +11,7 @@ import java.net.URL
 class ConnectorRestAPI : IConnector {
 
     @Throws(IOException::class)
-    override fun post(sBody: String, sUrl: String): ConnectorSuccessResponse {
+    override fun post(sBody: String, sUrl: String): ConnectorResponse {
         lateinit var connection: HttpURLConnection
         val sb: StringBuilder = StringBuilder()
 
@@ -40,7 +40,7 @@ class ConnectorRestAPI : IConnector {
     }
 
     @Throws(IOException::class)
-    override fun put(sBody: String, sUrl: String): ConnectorSuccessResponse {
+    override fun put(sBody: String, sUrl: String): ConnectorResponse {
         lateinit var connection: HttpURLConnection
         val sb: StringBuilder = StringBuilder()
 
@@ -69,7 +69,7 @@ class ConnectorRestAPI : IConnector {
     }
 
     @Throws(IOException::class)
-    override fun get(sUrl: String): ConnectorSuccessResponse {
+    override fun get(sUrl: String): ConnectorResponse {
         lateinit var connection: HttpURLConnection
         val sb: StringBuilder = StringBuilder()
 
@@ -92,7 +92,7 @@ class ConnectorRestAPI : IConnector {
     }
 
     @Throws(IOException::class)
-    override fun delete(sUrl: String): ConnectorSuccessResponse {
+    override fun delete(sUrl: String): ConnectorResponse {
         lateinit var connection: HttpURLConnection
         val sb: StringBuilder = StringBuilder()
 
