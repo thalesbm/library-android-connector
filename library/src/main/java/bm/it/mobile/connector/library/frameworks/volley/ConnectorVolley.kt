@@ -11,22 +11,35 @@ class ConnectorVolley(private val context: Context) : IConnectorVolley {
 
     private lateinit var request: CustomStringRequest
 
-    override fun post(sBody: String, sUrl: String, callback: ICallbackVolley) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun post(sUrl: String, sBody: String, callback: ICallbackVolley) {
+        postOrPut(sUrl, sBody, callback, Request.Method.POST)
     }
 
-    override fun put(sBody: String, sUrl: String, callback: ICallbackVolley) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun put(sUrl: String, sBody: String, callback: ICallbackVolley) {
+        postOrPut(sUrl, sBody, callback, Request.Method.PUT)
     }
 
     override fun get(sUrl: String, callback: ICallbackVolley) {
+        getOrDelete(sUrl, callback, Request.Method.GET)
+    }
+
+    override fun delete(sUrl: String, callback: ICallbackVolley) {
+        getOrDelete(sUrl, callback, Request.Method.DELETE)
+    }
+
+    private fun postOrPut(
+        sUrl: String,
+        sBody: String,
+        callback: ICallbackVolley,
+        method: Int
+    ) {
         val queue = Volley.newRequestQueue(context)
-        request = CustomStringRequest(Request.Method.GET, sUrl,
+        request = CustomStringRequest(method, sUrl,
             Response.Listener { response ->
                 val model = HelperVolley.returnSuccessObject(
                     request.statusCode,
                     sUrl,
-                    Request.Method.GET,
+                    method,
                     response
                 )
                 callback.onSuccess(model)
@@ -34,13 +47,35 @@ class ConnectorVolley(private val context: Context) : IConnectorVolley {
 
             Response.ErrorListener {
                 val model =
-                    HelperVolley.returnFailureObject(request.statusCode, sUrl, Request.Method.GET)
+                    HelperVolley.returnFailureObject(request.statusCode, sUrl, method)
                 callback.onFailure(model)
             })
+        request.setBody(sBody)
         queue.add(request)
     }
 
-    override fun delete(sUrl: String, callback: ICallbackVolley) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    private fun getOrDelete(
+        sUrl: String,
+        callback: ICallbackVolley,
+        method: Int
+    ) {
+        val queue = Volley.newRequestQueue(context)
+        request = CustomStringRequest(method, sUrl,
+            Response.Listener { response ->
+                val model = HelperVolley.returnSuccessObject(
+                    request.statusCode,
+                    sUrl,
+                    method,
+                    response
+                )
+                callback.onSuccess(model)
+            },
+
+            Response.ErrorListener {
+                val model =
+                    HelperVolley.returnFailureObject(request.statusCode, sUrl, method)
+                callback.onFailure(model)
+            })
+        queue.add(request)
     }
 }

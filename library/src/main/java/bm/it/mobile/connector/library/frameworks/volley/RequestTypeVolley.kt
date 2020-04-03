@@ -13,12 +13,39 @@ class RequestTypeVolley(private val baseURL: String, private val context: Contex
     private var rest: IConnectorVolley = ConnectorVolley(context)
 
     override fun post(url: String, body: String, callback: IConnectorCallback) {
+        rest.post(baseURL + url, body, object : ICallbackVolley{
+            override fun onSuccess(connector: ConnectorResponse) {
+                analyseResponse(connector, callback)
+            }
+
+            override fun onFailure(connector: ConnectorResponse) {
+                analyseResponse(connector, callback)
+            }
+        })
     }
 
     override fun put(url: String, body: String, callback: IConnectorCallback) {
+        rest.put(baseURL + url, body, object : ICallbackVolley{
+            override fun onSuccess(connector: ConnectorResponse) {
+                analyseResponse(connector, callback)
+            }
+
+            override fun onFailure(connector: ConnectorResponse) {
+                analyseResponse(connector, callback)
+            }
+        })
     }
 
     override fun delete(url: String, callback: IConnectorCallback) {
+        rest.delete(baseURL + url, object : ICallbackVolley{
+            override fun onSuccess(connector: ConnectorResponse) {
+                analyseResponse(connector, callback)
+            }
+
+            override fun onFailure(connector: ConnectorResponse) {
+                analyseResponse(connector, callback)
+            }
+        })
     }
 
     override fun get(url: String, callback: IConnectorCallback) {
