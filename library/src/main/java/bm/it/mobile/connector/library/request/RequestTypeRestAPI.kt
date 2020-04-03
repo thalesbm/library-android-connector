@@ -3,8 +3,8 @@ package bm.it.mobile.connector.library.request
 import bm.it.mobile.connector.library.IConnectorCallback
 import bm.it.mobile.connector.library.enums.HTTPCodes
 import bm.it.mobile.connector.library.rest.ConnectorRestAPI
-import bm.it.mobile.connector.library.rest.response.ConnectorFailureResponse
-import bm.it.mobile.connector.library.rest.response.ConnectorSuccessResponse
+import bm.it.mobile.connector.library.response.ConnectorFailureResponse
+import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
 import org.jetbrains.anko.doAsync
 
 class RequestTypeRestAPI : IRequestType {

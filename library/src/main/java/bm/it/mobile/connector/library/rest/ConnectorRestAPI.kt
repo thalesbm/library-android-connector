@@ -1,7 +1,7 @@
 package bm.it.mobile.connector.library.rest
 
 import android.util.Log
-import bm.it.mobile.connector.library.rest.response.ConnectorSuccessResponse
+import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL

@@ -3,8 +3,8 @@ package bm.it.mobile.connector.sample.repository
 import bm.it.mobile.connector.library.ConnectorApplication
 import bm.it.mobile.connector.library.IConnectorCallback
 import bm.it.mobile.connector.library.IRepositoryCallback
-import bm.it.mobile.connector.library.rest.response.ConnectorFailureResponse
-import bm.it.mobile.connector.library.rest.response.ConnectorSuccessResponse
+import bm.it.mobile.connector.library.response.ConnectorFailureResponse
+import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
 import bm.it.mobile.connector.sample.SampleURL
 import bm.it.mobile.connector.sample.model.UriModel
 import bm.it.mobile.connector.sample.model.UserModel

@@ -1,6 +1,6 @@
 package bm.it.mobile.connector.library.rest
 
-import bm.it.mobile.connector.library.rest.response.ConnectorSuccessResponse
+import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
 
 interface IConnectorRestAPI {
 

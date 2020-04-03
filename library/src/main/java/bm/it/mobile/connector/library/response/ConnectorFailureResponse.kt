@@ -1,4 +1,4 @@
-package bm.it.mobile.connector.library.rest.response
+package bm.it.mobile.connector.library.response
 
 class ConnectorFailureResponse(
     val code: Int,
