@@ -11,4 +11,6 @@ interface ISampleRepository {
     fun postUser(model: UpdateUserModel, callback: IRepositoryCallback<UserModel>)
 
     fun putUser(model: UpdateUserModel, callback: IRepositoryCallback<UserModel>)
+
+    fun deleteUser(callback: IRepositoryCallback<String>)
 }

@@ -66,4 +66,16 @@ class SampleRepository(private val connector: ConnectorApplication) : ISampleRep
             }
         })
     }
+
+    override fun deleteUser(callback: IRepositoryCallback<String>) {
+        connector.configureRequest().delete(SampleURL.DELETE, object : IConnectorCallback {
+            override fun onSuccess(successResponse: ConnectorSuccessResponse) {
+                callback.onSuccess(successResponse.message)
+            }
+
+            override fun onFailure(failureResponse: ConnectorFailureResponse) {
+                callback.onFailure()
+            }
+        })
+    }
 }

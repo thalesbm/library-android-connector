@@ -12,7 +12,7 @@ class SampleInteractor(private val presenter: ISamplePresenter,
     override fun getSample() {
         repository.getUsers(object : IRepositoryCallback<UserModel>{
             override fun onSuccess(out: UserModel) {
-                presenter.print(out)
+                presenter.print(out.firstName)
             }
 
             override fun onFailure() {
@@ -24,7 +24,7 @@ class SampleInteractor(private val presenter: ISamplePresenter,
     override fun postSample(model: UpdateUserModel) {
         repository.postUser(model, object : IRepositoryCallback<UserModel>{
             override fun onSuccess(out: UserModel) {
-                presenter.print(out)
+                presenter.print(out.firstName)
             }
 
             override fun onFailure() {
@@ -36,7 +36,7 @@ class SampleInteractor(private val presenter: ISamplePresenter,
     override fun putSample(model: UpdateUserModel) {
         repository.putUser(model, object : IRepositoryCallback<UserModel>{
             override fun onSuccess(out: UserModel) {
-                presenter.print(out)
+                presenter.print(out.firstName)
             }
 
             override fun onFailure() {
@@ -46,6 +46,14 @@ class SampleInteractor(private val presenter: ISamplePresenter,
     }
 
     override fun deleteSample() {
+        repository.deleteUser(object : IRepositoryCallback<String>{
+            override fun onSuccess(out: String) {
+                presenter.print(out)
+            }
 
+            override fun onFailure() {
+                presenter.showError()
+            }
+        })
     }
 }
