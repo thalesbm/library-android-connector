@@ -8,7 +8,7 @@ interface IRequestType {
 
     fun put(url: String, body: String, callback: IConnectorCallback)
 
-    fun delete(url: String, body: String, callback: IConnectorCallback)
+    fun delete(url: String, callback: IConnectorCallback)
 
     fun get(url: String, callback: IConnectorCallback)
 }

@@ -9,4 +9,6 @@ interface IConnectorRestAPI {
     fun put(sBody: String, sUrl: String): ConnectorSuccessResponse
 
     fun get(sUrl: String): ConnectorSuccessResponse
+
+    fun delete(sUrl: String): ConnectorSuccessResponse
 }

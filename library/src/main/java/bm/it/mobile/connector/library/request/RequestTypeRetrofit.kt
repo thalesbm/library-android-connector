@@ -10,7 +10,7 @@ class RequestTypeRetrofit() : IRequestType {
     override fun put(url: String, body: String, callback: IConnectorCallback) {
     }
 
-    override fun delete(url: String, body: String, callback: IConnectorCallback) {
+    override fun delete(url: String, callback: IConnectorCallback) {
     }
 
     override fun get(url: String, callback: IConnectorCallback) {

@@ -2,9 +2,9 @@ package bm.it.mobile.connector.library.request
 
 import bm.it.mobile.connector.library.IConnectorCallback
 import bm.it.mobile.connector.library.enums.HTTPCodes
-import bm.it.mobile.connector.library.rest.ConnectorRestAPI
 import bm.it.mobile.connector.library.response.ConnectorFailureResponse
 import bm.it.mobile.connector.library.response.ConnectorSuccessResponse
+import bm.it.mobile.connector.library.rest.ConnectorRestAPI
 import org.jetbrains.anko.doAsync
 
 class RequestTypeRestAPI : IRequestType {
@@ -32,21 +32,29 @@ class RequestTypeRestAPI : IRequestType {
         }
     }
 
-    override fun delete(url: String, body: String, callback: IConnectorCallback) {
+    override fun delete(url: String, callback: IConnectorCallback) {
+        doAsync {
+            val response = rest.delete(url)
+            analyseResponse(response, callback)
+        }
     }
 
     private fun analyseResponse(
         successResponse: ConnectorSuccessResponse,
-        callback: IConnectorCallback) {
+        callback: IConnectorCallback
+    ) {
         if (successResponse.code == HTTPCodes.SUCCESS.code ||
-            successResponse.code == HTTPCodes.CREATED.code  ) {
+            successResponse.code == HTTPCodes.CREATED.code ||
+            successResponse.code == HTTPCodes.NO_CONTENT.code
+        ) {
             callback.onSuccess(successResponse)
-        }
-        callback.onFailure(
-            ConnectorFailureResponse(
-                successResponse.code, successResponse.message,
-                successResponse.method, successResponse.url
+        } else {
+            callback.onFailure(
+                ConnectorFailureResponse(
+                    successResponse.code, successResponse.message,
+                    successResponse.method, successResponse.url
+                )
             )
-        )
+        }
     }
 }
