@@ -1,7 +1,7 @@
 package bm.it.mobile.connector.sample.interactor
 
 import bm.it.mobile.connector.library.IRepositoryCallback
-import bm.it.mobile.connector.sample.model.UriModel
+import bm.it.mobile.connector.sample.model.UpdateUserModel
 import bm.it.mobile.connector.sample.model.UserModel
 import bm.it.mobile.connector.sample.presenter.ISamplePresenter
 import bm.it.mobile.connector.sample.repository.ISampleRepository
@@ -21,9 +21,9 @@ class SampleInteractor(private val presenter: ISamplePresenter,
         })
     }
 
-    override fun postSample(model: UserModel) {
-        repository.postUser(model, object : IRepositoryCallback<UriModel>{
-            override fun onSuccess(out: UriModel) {
+    override fun postSample(model: UpdateUserModel) {
+        repository.postUser(model, object : IRepositoryCallback<UserModel>{
+            override fun onSuccess(out: UserModel) {
                 presenter.print(out)
             }
 
@@ -33,9 +33,9 @@ class SampleInteractor(private val presenter: ISamplePresenter,
         })
     }
 
-    override fun putSample(model: UserModel) {
-        repository.putUser(model, object : IRepositoryCallback<UriModel>{
-            override fun onSuccess(out: UriModel) {
+    override fun putSample(model: UpdateUserModel) {
+        repository.putUser(model, object : IRepositoryCallback<UserModel>{
+            override fun onSuccess(out: UserModel) {
                 presenter.print(out)
             }
 

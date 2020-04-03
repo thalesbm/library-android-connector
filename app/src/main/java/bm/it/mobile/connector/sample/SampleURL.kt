@@ -2,8 +2,8 @@ package bm.it.mobile.connector.sample
 
 class SampleURL {
     companion object {
-        val GET = "https://api.myjson.com/bins/cwv0o"
-        val POST = "https://api.myjson.com/bins"
-        val PUT = "https://api.myjson.com/bins"
+        val GET = "https://reqres.in/api/users/3"
+        val POST = "https://reqres.in/api/users"
+        val PUT = "https://reqres.in/api/users/2"
     }
 }

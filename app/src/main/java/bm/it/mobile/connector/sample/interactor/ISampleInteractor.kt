@@ -1,14 +1,14 @@
 package bm.it.mobile.connector.sample.interactor
 
-import bm.it.mobile.connector.sample.model.UserModel
+import bm.it.mobile.connector.sample.model.UpdateUserModel
 
 interface ISampleInteractor {
 
     fun getSample()
 
-    fun postSample(model: UserModel)
-
-    fun putSample(model: UserModel)
-
     fun deleteSample()
+
+    fun postSample(model: UpdateUserModel)
+
+    fun putSample(model: UpdateUserModel)
 }

@@ -1,12 +1,12 @@
 package bm.it.mobile.connector.sample.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import bm.it.mobile.connector.sample.R
 import bm.it.mobile.connector.sample.SampleApplication
 import bm.it.mobile.connector.sample.interactor.ISampleInteractor
 import bm.it.mobile.connector.sample.interactor.SampleInteractor
-import bm.it.mobile.connector.sample.model.UserModel
+import bm.it.mobile.connector.sample.model.UpdateUserModel
 import bm.it.mobile.connector.sample.presenter.SamplePresenter
 import bm.it.mobile.connector.sample.repository.SampleRepository
 import kotlinx.android.synthetic.main.activity_sample.*
@@ -32,7 +32,11 @@ class SampleActivity : AppCompatActivity(), ISampleView {
         }
 
         activitySamplePutButton.setOnClickListener {
-            val model = UserModel(27, "thales.bm92@gmail.com", "Thales Bertolini Marega", true)
+            val model =
+                UpdateUserModel(
+                    firstName = "Thales",
+                    job = "Developer"
+                )
             interactor.putSample(model)
         }
 
@@ -41,7 +45,11 @@ class SampleActivity : AppCompatActivity(), ISampleView {
         }
 
         activitySamplePostButton.setOnClickListener {
-            val model = UserModel(27, "thales.bm92@gmail.com", "Thales B Marega", true)
+            val model =
+                UpdateUserModel(
+                    firstName = "Thales Marega",
+                    job = "Developer"
+                )
             interactor.postSample(model)
         }
     }
