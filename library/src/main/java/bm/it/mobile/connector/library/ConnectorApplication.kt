@@ -5,6 +5,7 @@ import bm.it.mobile.connector.library.enums.ConnectorType
 import bm.it.mobile.connector.library.request.IRequestType
 import bm.it.mobile.connector.library.request.RequestTypeRestAPI
 import bm.it.mobile.connector.library.request.RequestTypeRetrofit
+import bm.it.mobile.connector.library.request.RequestTypeVolley
 
 class ConnectorApplication(private val context: Context,
                            private val connectorType: ConnectorType,
@@ -15,11 +16,16 @@ class ConnectorApplication(private val context: Context,
     fun configureRequest(): IRequestType {
         if (!::requestType.isInitialized) {
 
-            if (connectorType == ConnectorType.REST_API) {
-                requestType = RequestTypeRestAPI(baseURL)
-
-            } else if (connectorType == ConnectorType.RETROFIT) {
-                requestType = RequestTypeRetrofit(baseURL)
+            requestType = when (connectorType) {
+                ConnectorType.REST_API -> {
+                    RequestTypeRestAPI(baseURL)
+                }
+                ConnectorType.RETROFIT -> {
+                    RequestTypeRetrofit(baseURL)
+                }
+                ConnectorType.VOLLEY -> {
+                    RequestTypeVolley(baseURL, context)
+                }
             }
         }
         return requestType

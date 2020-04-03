@@ -16,7 +16,7 @@ class SampleApplication: Application() {
         connector = ConnectorApplication.Builder()
             .setContext(this)
             .setBaseURL(SampleURL.BASE.url)
-            .setType(ConnectorType.REST_API)
+            .setType(ConnectorType.VOLLEY)
             .build()
     }
 

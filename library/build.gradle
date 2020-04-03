@@ -41,6 +41,9 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingVersion"
     implementation "com.google.code.gson:gson:$gsonVersion"
 
+    // VOLLEY
+    implementation "com.android.volley:volley:$volleyVersion"
+
     // TESTS
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
