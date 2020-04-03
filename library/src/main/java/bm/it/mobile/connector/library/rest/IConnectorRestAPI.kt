@@ -6,5 +6,7 @@ interface IConnectorRestAPI {
 
     fun post(sBody: String, sUrl: String): ConnectorSuccessResponse
 
+    fun put(sBody: String, sUrl: String): ConnectorSuccessResponse
+
     fun get(sUrl: String): ConnectorSuccessResponse
 }

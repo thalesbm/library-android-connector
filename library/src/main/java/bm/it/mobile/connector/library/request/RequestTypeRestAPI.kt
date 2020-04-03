@@ -19,9 +19,10 @@ class RequestTypeRestAPI : IRequestType {
     }
 
     override fun put(url: String, body: String, callback: IConnectorCallback) {
-    }
-
-    override fun delete(url: String, body: String, callback: IConnectorCallback) {
+        doAsync {
+            val response = rest.put(body, url)
+            analyseResponse(response, callback)
+        }
     }
 
     override fun get(url: String, callback: IConnectorCallback) {
@@ -31,10 +32,12 @@ class RequestTypeRestAPI : IRequestType {
         }
     }
 
+    override fun delete(url: String, body: String, callback: IConnectorCallback) {
+    }
+
     private fun analyseResponse(
         successResponse: ConnectorSuccessResponse,
-        callback: IConnectorCallback
-    ) {
+        callback: IConnectorCallback) {
         if (successResponse.code == HTTPCodes.SUCCESS.code ||
             successResponse.code == HTTPCodes.CREATED.code  ) {
             callback.onSuccess(successResponse)
