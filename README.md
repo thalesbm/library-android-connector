@@ -2,6 +2,8 @@
 
 ### An android library that you can choose which rest framework you would like to use!
 
+------
+
 #### Status
 - [x] Sample App
 - [x] HttpURLConnection
