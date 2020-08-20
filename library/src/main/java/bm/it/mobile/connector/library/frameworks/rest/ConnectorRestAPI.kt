@@ -5,8 +5,7 @@ import bm.it.mobile.connector.library.response.ConnectorResponse
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
+import java.net.*
 
 class ConnectorRestAPI : IConnector {
 
@@ -73,12 +72,20 @@ class ConnectorRestAPI : IConnector {
         lateinit var connection: HttpURLConnection
         val sb: StringBuilder = StringBuilder()
 
+        CookieHandler.setDefault(
+            CookieManager(
+                null,
+                CookiePolicy.ACCEPT_ALL
+            )
+        )
+
         try {
             val url = URL(sUrl)
             connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "GET"
-            connection.setRequestProperty("Content-Type", "application/json")
+            connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8")
             connection.connectTimeout = 10000
+            connection.connect()
 
             var line: String?
             val reader = BufferedReader(InputStreamReader(connection.inputStream))
