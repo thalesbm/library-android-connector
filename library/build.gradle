@@ -24,6 +24,9 @@ android {
         }
     }
 
+    packagingOptions {
+        exclude 'META-INF/library_release.kotlin_module'
+    }
 }
 
 dependencies {
@@ -35,6 +38,10 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$androidXAppCompactVersion"
     implementation "androidx.core:core-ktx:$androidXCoreVersion"
     implementation "com.google.code.gson:gson:$gsonVersion"
+
+    // COROUTINES
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
     // RETROFIT
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
