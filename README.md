@@ -1,4 +1,4 @@
-# android-connector-library
+# library-android-connector
 
 ### An android library that you can choose which rest framework you would like to use!
 
@@ -33,7 +33,7 @@ connector.configureRequest().get("URL", object : IConnectorCallback {
 
 ------
 
-#### Instalation
+#### Installation
 
 ###### Step 1. Add the JitPack repository to your build file
 ```
@@ -47,6 +47,6 @@ allprojects {
 ###### Step 2. Add the dependency
 ```
 dependencies {
-    implementation 'com.github.thalesbm:android-connector-library:0.1.0'
+    implementation 'com.github.thalesbm:library-android-connector:1.0.0'
 }
 ```
