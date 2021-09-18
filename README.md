@@ -47,6 +47,6 @@ allprojects {
 ###### Step 2. Add the dependency
 ```
 dependencies {
-    implementation 'com.github.thalesbm:library-android-connector:1.0.0'
+    implementation 'com.github.thalesbm:library-android-connector:1.0.1'
 }
 ```
